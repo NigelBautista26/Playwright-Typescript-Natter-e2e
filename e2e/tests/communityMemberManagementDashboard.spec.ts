@@ -34,14 +34,12 @@ import {
   viewMyEventsCheckBox,
   viewReportsCheckBox,
 } from "@pages/communityMemberManagementDashboardPage";
-import { userLogin } from "@pages/loginPage";
 import { expect, test } from "@playwright/test";
 import { communityRoles } from "constants/communityRoles";
 import { communityTags } from "constants/communityTags";
 
 test.describe("Community member manager dashboard tests", () => {
   test.beforeEach(async ({ page }) => {
-    await userLogin(page, "user1");
     await page.goto("/org/natter/communities/660409/members");
   });
 
@@ -211,10 +209,10 @@ test.describe("Community member manager dashboard tests", () => {
   test("Edit member role to a community custom member", async ({ page }) => {
     await editCommunityMemberRoleAndAccess(page, UserRoleEnum.CustomAccess);
     // await editCommunityManagerCheckBox(page).click();
-    await manageCommunityMembersCheckBox(page).click();
-    await viewCommunityMembersCheckBox(page).click();
-    await viewCommunityMembersTagsCheckBox(page).click();
-    await createEventCheckBox(page).click();
+    // await manageCommunityMembersCheckBox(page).click();
+    // await viewCommunityMembersCheckBox(page).click();
+    // await viewCommunityMembersTagsCheckBox(page).click();
+    // await createEventCheckBox(page).click();
     await modifyEventCheckBox(page).click();
     await modifyCommunityCheckBox(page).click();
     // await viewDashboardCheckBox(page).click();

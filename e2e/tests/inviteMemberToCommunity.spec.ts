@@ -1,4 +1,6 @@
 import {
+  RemoveOptionEnum,
+  RoleOptionsEnum,
   invalidEmailMessage,
   inviteButton,
   inviteMembers,
@@ -6,46 +8,44 @@ import {
   successMessage,
   uploadMembersThroughCSVfile,
 } from "@pages/inviteMemberToCommunityPage";
-import { userLogin } from "@pages/loginPage";
 import { expect, test } from "@playwright/test";
 
 test.describe("Community member manager dashboard tests", () => {
   test.beforeEach(async ({ page }) => {
-    await userLogin(page, "user1");
     await page.goto("/org/natter/communities/660409/members");
   });
 
   test("Invite a community member as a community owner", async ({ page }) => {
-    await inviteMembers(page, "Community Owner");
+    await inviteMembers(page, RoleOptionsEnum.CommunityOwner);
     await expect(successMessage(page)).toHaveText("Invitation has been sent");
   });
 
   test("Invite a community member as a community manager", async ({ page }) => {
-    await inviteMembers(page, "Community Manager");
+    await inviteMembers(page, RoleOptionsEnum.CommunityManager);
     await expect(successMessage(page)).toHaveText("Invitation has been sent");
   });
 
   test("Invite a community member as a community member", async ({ page }) => {
-    await inviteMembers(page, "Community Member");
+    await inviteMembers(page, RoleOptionsEnum.CommunityMember);
     await expect(successMessage(page)).toHaveText("Invitation has been sent");
   });
 
   test.skip("Invite a community member as a community access", async ({
     page,
   }) => {
-    await inviteMembers(page, "Community Custom Access");
+    await inviteMembers(page, RoleOptionsEnum.CommunityCustomAccess);
     await expect(successMessage(page)).toHaveText("Invitation has been sent");
   });
 
   test("Invite members through a CSV file", async ({ page }) => {
-    await inviteMembers(page, "CSV file");
+    await inviteMembers(page, RoleOptionsEnum.CSVFile);
     await expect(successMessage(page)).toHaveText("Invitation has been sent");
   });
 
   test("Invite members through a CSV file and then remove all", async ({
     page,
   }) => {
-    await uploadMembersThroughCSVfile(page, "Remove All");
+    await uploadMembersThroughCSVfile(page, RemoveOptionEnum.RemoveAll);
     await expect(inviteButton(page)).toHaveText("Invite");
     await expect(inviteButton(page)).toBeDisabled();
   });
@@ -53,7 +53,7 @@ test.describe("Community member manager dashboard tests", () => {
   test("Invite members through a CSV file and then remove one member", async ({
     page,
   }) => {
-    await uploadMembersThroughCSVfile(page, "Remove One Member");
+    await uploadMembersThroughCSVfile(page, RemoveOptionEnum.RemoveOneMember);
     await expect(inviteButton(page)).toHaveText("Invite");
     await expect(inviteButton(page)).toBeEnabled();
   });

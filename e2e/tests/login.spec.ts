@@ -1,4 +1,3 @@
-import { userLogin } from "@pages/loginPage";
 import { test } from "@playwright/test";
 
 test.describe("Login page", () => {
@@ -6,8 +5,9 @@ test.describe("Login page", () => {
     await page.goto(``);
   });
 
-  test("Provide wrong email", async ({ page }) => {
-    await userLogin(page, "userWithoutAccount");
-    // await expect(validationError).toHaveText('Invalid username or password.');
-  });
+  // I need to update this after i implemented the global login feature in the framework...
+  // test("Provide wrong email", async ({ page }) => {
+  //   await userLogin(page, "userWithoutAccount");
+  //   // await expect(validationError).toHaveText('Invalid username or password.');
+  // });
 });

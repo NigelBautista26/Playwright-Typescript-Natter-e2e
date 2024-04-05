@@ -16,12 +16,14 @@ export const searchedCommunityName: PageLocator = getByText(
   "Nigels Search Community Test"
 );
 
-export const searchCommunity: PageAction = async (page): Promise<void> => {
+export const searchCommunity: PageAction = async (
+  page: Page
+): Promise<void> => {
   await searchCommunityField(page).fill("Nigels Search Community Test");
 };
 
 export const searchCommunityNotFound: PageAction = async (
-  page
+  page: Page
 ): Promise<void> => {
   const searchField = await page.getByPlaceholder("Search community");
   await searchField.fill(faker.string.alpha(10));

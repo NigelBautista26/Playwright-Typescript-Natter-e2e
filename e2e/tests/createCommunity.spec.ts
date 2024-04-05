@@ -12,13 +12,11 @@ import {
   nameFieldErrorMessage,
   tagShortValueErrorMessage,
 } from "@pages/createCommunityPage";
-import { userLogin } from "@pages/loginPage";
 import { expect, test } from "@playwright/test";
 import { createCommunityAssertionMessages } from "constants/createCommunityAssertionMessages";
 
 test.describe("Create Community Tests", () => {
   test.beforeEach(async ({ page }) => {
-    await userLogin(page, "user1");
     await page.goto("/org/natter/communities");
   });
 

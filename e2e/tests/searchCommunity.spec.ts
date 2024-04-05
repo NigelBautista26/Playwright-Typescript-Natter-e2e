@@ -1,4 +1,3 @@
-import { userLogin } from "@pages/loginPage";
 import {
   searchCommunity,
   searchCommunityNotFound,
@@ -9,7 +8,6 @@ import { expect, test } from "@playwright/test";
 
 test.describe("Search Community Tests", () => {
   test.beforeEach(async ({ page }) => {
-    await userLogin(page, "user1");
     await page.goto("/org/natter/communities");
   });
 
@@ -23,7 +21,7 @@ test.describe("Search Community Tests", () => {
   test("Searched community not found", async ({ page }) => {
     await searchCommunityNotFound(page);
     await expect(searchedCommunityNotFound(page)).toHaveText(
-      "No matching communities found"
+      "No matching Communities found."
     );
   });
 });

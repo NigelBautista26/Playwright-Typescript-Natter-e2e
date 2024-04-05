@@ -6,6 +6,7 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
+      "@playwrightConfig/*": ["../playwright.config.ts"],
       "@utils/*": ["utils/*"],
       "@factories/*": ["factories/*"],
       "@pages/*": ["pages/*"]

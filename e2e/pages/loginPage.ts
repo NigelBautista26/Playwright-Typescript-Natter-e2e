@@ -1,13 +1,15 @@
 import { Page } from "@playwright/test";
 import { envUsers } from "@utils/environmentUsersLogic";
 import { PageAction, PageLocator, getByTestId } from "@utils/pageUtils";
+import { getEnvironmentConfig } from "@playwrightConfig/playwright.config";
 
 export const emailField: PageLocator = getByTestId("login-username-input");
 export const passwordField: PageLocator = getByTestId("login-password-input");
 export const loginButton: PageLocator = getByTestId("login-submit");
 
-export const gotoBaseUrl: PageAction = async (page) => {
-  await page.goto("");
+const gotoBaseUrl: PageAction = async (page: Page) => {
+  const { baseURL } = getEnvironmentConfig();
+  await page.goto(baseURL);
 };
 
 export const userLogin: PageAction = async (page: Page, user: string) => {

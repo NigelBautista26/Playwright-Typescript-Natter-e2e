@@ -19,12 +19,10 @@ import {
   verifyQuestionValidationForNatterPage,
   createEventWithTopic,
 } from "@pages/eventCreationNatterPage";
-import { userLogin } from "@pages/loginPage";
 import { expect, test } from "@playwright/test";
 
 test.describe("Event creation for natter page test scenarios ", () => {
   test.beforeEach(async ({ page }) => {
-    await userLogin(page, "user1");
     await page.goto("/my-events/upcoming");
   });
 

@@ -1,4 +1,3 @@
-import { userLogin } from "@pages/loginPage";
 import {
   addFacebookURL,
   addInstagramURL,
@@ -23,17 +22,16 @@ import {
   invalidTwitterURLMessage,
   invalidURLToLongMessage,
   linkedInURLField,
-  profileURLs,
   twitterURLField,
   uploadAvatarImage,
   userAvatarImage,
 } from "@pages/profileSettings";
 import { expect, test } from "@playwright/test";
 import { profileSettingsExpectedMessages } from "constants/invalidURLMessagesForProfileSettings";
+import { profileURLs } from "constants/socialMediaURLs";
 
 test.describe("Profile settings page test scenarios ", () => {
   test.beforeEach(async ({ page }) => {
-    await userLogin(page, "user1");
     await page.goto("/user-profile");
   });
 

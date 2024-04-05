@@ -11,9 +11,10 @@ import {
   clickNextButtons,
   endCreateEventButton,
 } from "./eventCreationDetailsPage";
+import { Page } from "@playwright/test";
 
 export const createEventWithQuestionTypeForExitSurveyPage: PageAction = async (
-  page,
+  page: Page,
   questionType: PageAction,
   mandatory: boolean
 ) => {
@@ -29,7 +30,7 @@ export const createEventWithQuestionTypeForExitSurveyPage: PageAction = async (
 };
 
 export const verifyQuestionValidationForExitSurveyPage: PageAction = async (
-  page,
+  page: Page,
   questionType: PageAction,
   typeFieldValidation: boolean
 ) => {

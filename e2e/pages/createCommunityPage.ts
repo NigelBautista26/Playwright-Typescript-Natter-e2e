@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+import { Page } from "@playwright/test";
 import {
   PageAction,
   PageLocator,
@@ -43,7 +44,7 @@ export const communityCreationSuccessfulMessage: PageLocator = getByRole({
 export const nameFieldErrorMessage: PageLocator = getByText(
   "Name too short (min 3"
 );
-export const locationTagErrorMessage: PageLocator = (page) =>
+export const locationTagErrorMessage: PageLocator = (page: Page) =>
   page
     .getByTestId("inputWrapper-tagsCategories.0.tags")
     .getByText("At least one tag required");
@@ -56,33 +57,33 @@ export const nameEmptyErrorMessage: PageLocator = getByText(
 export const editLocationTagField: PageLocator = getByTestId(
   "tagsCategories.0.name"
 );
-export const editTagCategoryButton: PageLocator = (page) =>
+export const editTagCategoryButton: PageLocator = (page: Page) =>
   page.getByTestId("SortableItem-0").getByTestId("TagsCategory-button-edit");
 export const editFunctionTagField: PageLocator = getByTestId(
   "tagsCategories.1.name"
 );
-export const editFunctionTagCategoryButton: PageLocator = (page) =>
+export const editFunctionTagCategoryButton: PageLocator = (page: Page) =>
   page.getByTestId("SortableItem-1").getByTestId("TagsCategory-button-edit");
 export const editTenureTagField: PageLocator = getByTestId(
   "tagsCategories.2.name"
 );
-export const editTenureTagCategoryButton: PageLocator = (page) =>
+export const editTenureTagCategoryButton: PageLocator = (page: Page) =>
   page.getByTestId("SortableItem-2").getByTestId("TagsCategory-button-edit");
 export const editSeniorityTagField: PageLocator = getByTestId(
   "tagsCategories.3.name"
 );
-export const editSeniorityTagCategoryButton: PageLocator = (page) =>
+export const editSeniorityTagCategoryButton: PageLocator = (page: Page) =>
   page.getByTestId("SortableItem-3").getByTestId("TagsCategory-button-edit");
 
-export const goToCreateCommunityPage: PageAction = async (page) => {
+export const goToCreateCommunityPage: PageAction = async (page: Page) => {
   await createCommunityButton(page).click();
 };
 
-export const goToCreateCommunityTagsPage: PageAction = async (page) => {
+export const goToCreateCommunityTagsPage: PageAction = async (page: Page) => {
   await createCommunitySubmitButton(page).click();
 };
 
-export const createCommunityBasicsSteps: PageAction = async (page) => {
+export const createCommunityBasicsSteps: PageAction = async (page: Page) => {
   await goToCreateCommunityPage(page);
   await calendarAccessButton(page).check();
   await createCommunityNameField(page).fill(
@@ -91,7 +92,7 @@ export const createCommunityBasicsSteps: PageAction = async (page) => {
   await uploadImageButton(page).setInputFiles("e2e/assets/london.jpeg");
 };
 
-export const createCommunitySteps: PageAction = async (page) => {
+export const createCommunitySteps: PageAction = async (page: Page) => {
   await createCommunityBasicsSteps(page);
   await goToCreateCommunityTagsPage(page);
   await locationTagField(page).fill("London");
@@ -108,93 +109,93 @@ export const createCommunitySteps: PageAction = async (page) => {
   await createCommunityCompletionButton(page).click();
 };
 
-const fillEmptyCommunityName: PageAction = async (page) => {
+const fillEmptyCommunityName: PageAction = async (page: Page) => {
   await createCommunityNameField(page).fill("");
 };
 
-const fillEmptyLocationTag: PageAction = async (page) => {
+const fillEmptyLocationTag: PageAction = async (page: Page) => {
   await goToCreateCommunityTagsPage(page);
   await locationTagField(page).fill("");
 };
 
-const fillShortLocationTagValue: PageAction = async (page) => {
+const fillShortLocationTagValue: PageAction = async (page: Page) => {
   await goToCreateCommunityTagsPage(page);
   await locationTagField(page).fill("a");
 };
 
-const editEmptyLocationTagCategory: PageAction = async (page) => {
+const editEmptyLocationTagCategory: PageAction = async (page: Page) => {
   await goToCreateCommunityTagsPage(page);
   await editTagCategoryButton(page).click();
   await editLocationTagField(page).fill("");
 };
 
-const editNewLocationTagCategory: PageAction = async (page) => {
+const editNewLocationTagCategory: PageAction = async (page: Page) => {
   await goToCreateCommunityTagsPage(page);
   await editTagCategoryButton(page).click();
   await editLocationTagField(page).fill("Location-Rename-Test");
 };
 
-const fillEmptyFunctionTag: PageAction = async (page) => {
+const fillEmptyFunctionTag: PageAction = async (page: Page) => {
   await goToCreateCommunityTagsPage(page);
   await functionTagField(page).fill("");
 };
 
-const fillShortFunctionTagValue: PageAction = async (page) => {
+const fillShortFunctionTagValue: PageAction = async (page: Page) => {
   await goToCreateCommunityTagsPage(page);
   await functionTagField(page).fill("a");
 };
 
-const editEmptyFunctionTagCategory: PageAction = async (page) => {
+const editEmptyFunctionTagCategory: PageAction = async (page: Page) => {
   await goToCreateCommunityTagsPage(page);
   await editFunctionTagCategoryButton(page).click();
   await editFunctionTagField(page).fill("");
 };
 
-const editNewFunctionTagCategory: PageAction = async (page) => {
+const editNewFunctionTagCategory: PageAction = async (page: Page) => {
   await goToCreateCommunityTagsPage(page);
   await editFunctionTagCategoryButton(page).click();
   await editFunctionTagField(page).fill("Function-Rename-Test");
 };
 
-const fillEmptyTenureTag: PageAction = async (page) => {
+const fillEmptyTenureTag: PageAction = async (page: Page) => {
   await goToCreateCommunityTagsPage(page);
   await tenureTagField(page).fill("");
 };
 
-const fillShortTenureTagValue: PageAction = async (page) => {
+const fillShortTenureTagValue: PageAction = async (page: Page) => {
   await goToCreateCommunityTagsPage(page);
   await tenureTagField(page).fill("a");
 };
 
-const editEmptyTenureTagCategory: PageAction = async (page) => {
+const editEmptyTenureTagCategory: PageAction = async (page: Page) => {
   await goToCreateCommunityTagsPage(page);
   await editTenureTagCategoryButton(page).click();
   await editTenureTagField(page).fill("");
 };
 
-const editNewTenureTagCategory: PageAction = async (page) => {
+const editNewTenureTagCategory: PageAction = async (page: Page) => {
   await goToCreateCommunityTagsPage(page);
   await editTenureTagCategoryButton(page).click();
   await editTenureTagField(page).fill("Tenure-Rename-Test");
 };
 
-const fillEmptySeniorityTag: PageAction = async (page) => {
+const fillEmptySeniorityTag: PageAction = async (page: Page) => {
   await goToCreateCommunityTagsPage(page);
   await seniorityTagField(page).fill("");
 };
 
-const fillShortSeniorityTagValue: PageAction = async (page) => {
+const fillShortSeniorityTagValue: PageAction = async (page: Page) => {
   await goToCreateCommunityTagsPage(page);
   await seniorityTagField(page).fill("a");
 };
 
-const editEmptySeniorityTagCategory: PageAction = async (page) => {
+const editEmptySeniorityTagCategory: PageAction = async (page: Page) => {
   await goToCreateCommunityTagsPage(page);
   await editSeniorityTagCategoryButton(page).click();
   await editSeniorityTagField(page).fill("");
 };
 
-const editNewSeniorityTagCategory: PageAction = async (page) => {
+const editNewSeniorityTagCategory: PageAction = async (page: Page) => {
   await goToCreateCommunityTagsPage(page);
   await editSeniorityTagCategoryButton(page).click();
   await editSeniorityTagField(page).fill("Seniority-Rename-Test");
@@ -252,7 +253,7 @@ const createCommunityScenarioMapping: Record<
 };
 
 export const createCommunityScenarios: PageAction = async (
-  page,
+  page: Page,
   field: CommunityScenarioEnum
 ) => {
   const scenarioFunction = createCommunityScenarioMapping[field];

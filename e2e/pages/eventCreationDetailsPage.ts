@@ -38,7 +38,6 @@ export const buttonCreateEvent: PageLocator = getByRole({
   role: "button",
   name: "Create Event",
 });
-
 export const nextMonthButton: PageLocator = getByLabel("Next month");
 export const selectedDay: PageLocator = getByRole({
   role: "gridcell",
@@ -67,9 +66,8 @@ export const eventSuccessfulMessage: PageLocator = getByRole({
   role: "heading",
   name: "Event successfully created",
 });
-export const uploadEventFileButton: PageLocator = (page) =>
+export const uploadEventFileButton: PageLocator = (page: Page) =>
   getByTestId("image-input")(page).first();
-
 // The sponsor upload image file button has the same testId as the upload event image button, and i couldnt make it work using the functional programing way so im using the old page setup for now....
 export const uploadSponsorFileButton = (page: Page): Readonly<Locator> =>
   page
@@ -88,77 +86,81 @@ export const endTimeFieldErrorMessage: PageLocator = getByText(
 );
 export const startCreateEventButton: PageLocator = getByRole({
   role: "link",
-  name: "Create Event",
+  name: "Create new Event",
 });
 export const shareURLMessage: PageLocator = getByText(
   "Share this unique URL link to"
 );
-export const copyLinkButton: PageLocator = (page) =>
+export const copyLinkButton: PageLocator = (page: Page) =>
   getByTestId("dialog-content")(page).getByRole("button");
+
 export const successfullyCopiedLinkMessage: PageLocator = getByRole({
   role: "alert",
   name: "Copied to clipboard",
 });
 
-export const fillEventDate: PageAction = async (page) => {
+export const fillEventDate: PageAction = async (page: Page) => {
   await clickAndWait(dateInput, page, 1000);
   await clickAndWait(nextMonthButton, page, 1000);
   await selectedDay(page).click();
 };
 
-export const fillEventStartTime: PageAction = async (page) => {
+export const fillEventStartTime: PageAction = async (page: Page) => {
   await clickAndWait(fromDate, page, 1000);
   await startTimeHour(page).click();
   await startTimeMinutes(page).click();
   await clickAndWait(timeSetOkButton, page, 1000);
 };
 
-export const fillEventEndTime: PageAction = async (page) => {
+export const fillEventEndTime: PageAction = async (page: Page) => {
   await clickAndWait(toDate, page, 1000);
   await endTimeHour(page).click();
   await pmTime(page).click();
   await clickAndWait(timeSetOkButton, page, 1500);
 };
 
-export const fillMandatoryFields: PageAction = async (page) => {
+export const fillMandatoryFields: PageAction = async (page: Page) => {
   await eventNameInput(page).fill(`${faker.lorem.sentence()}`);
   await fillEventDate(page);
   await fillEventStartTime(page);
   await fillEventEndTime(page);
 };
 
-export const clickNextButtons: PageAction = async (page, numClicks: number) => {
+export const clickNextButtons: PageAction = async (
+  page: Page,
+  numClicks: number
+) => {
   for (let i = 0; i < numClicks; i++) {
     await nextButton(page).click();
   }
 };
 
-export const createEventPageSetup: PageAction = async (page) => {
-  await page.waitForTimeout(3000);
+export const createEventPageSetup: PageAction = async (page: Page) => {
+  await page.waitForTimeout(5000);
   await startCreateEventButton(page).click();
 };
 
-export const createEventWithRequiredFields: PageAction = async (page) => {
+export const createEventWithRequiredFields: PageAction = async (page: Page) => {
   await createEventPageSetup(page);
   await fillMandatoryFields(page);
   await clickNextButtons(page, 4);
   await endCreateEventButton(page).click();
 };
 
-export const createEventAndCopyEventLink: PageAction = async (page) => {
+export const createEventAndCopyEventLink: PageAction = async (page: Page) => {
   await createEventPageSetup(page);
   await createEventWithRequiredFields(page);
   await copyLinkButton(page).click();
 };
 
-export const createEventWithoutEventName: PageAction = async (page) => {
+export const createEventWithoutEventName: PageAction = async (page: Page) => {
   await createEventPageSetup(page);
   await fillMandatoryFields(page);
   await eventNameInput(page).fill("");
   await clickNextButtons(page, 1);
 };
 
-export const createEventWithoutEventDate: PageAction = async (page) => {
+export const createEventWithoutEventDate: PageAction = async (page: Page) => {
   await createEventPageSetup(page);
   await eventNameInput(page).fill(`${faker.lorem.sentence()}`);
   await fillEventStartTime(page);
@@ -166,7 +168,9 @@ export const createEventWithoutEventDate: PageAction = async (page) => {
   await clickNextButtons(page, 1);
 };
 
-export const createEventWithoutEventStartTime: PageAction = async (page) => {
+export const createEventWithoutEventStartTime: PageAction = async (
+  page: Page
+) => {
   await createEventPageSetup(page);
   await eventNameInput(page).fill(`${faker.lorem.sentence()}`);
   await fillEventDate(page);
@@ -174,7 +178,9 @@ export const createEventWithoutEventStartTime: PageAction = async (page) => {
   await clickNextButtons(page, 1);
 };
 
-export const createEventWithoutEventEndTime: PageAction = async (page) => {
+export const createEventWithoutEventEndTime: PageAction = async (
+  page: Page
+) => {
   await createEventPageSetup(page);
   await eventNameInput(page).fill(`${faker.lorem.sentence()}`);
   await fillEventDate(page);
@@ -183,7 +189,7 @@ export const createEventWithoutEventEndTime: PageAction = async (page) => {
 };
 
 export const createEventWithOptionalEventLogoFieldOnly: PageAction = async (
-  page
+  page: Page
 ) => {
   await createEventPageSetup(page);
   await uploadEventFileButton(page).setInputFiles(logo);
@@ -191,7 +197,7 @@ export const createEventWithOptionalEventLogoFieldOnly: PageAction = async (
 };
 
 export const createEventWithOptionalSponsorLogoFieldOnly: PageAction = async (
-  page
+  page: Page
 ) => {
   await createEventPageSetup(page);
   await uploadSponsorFileButton(page).setInputFiles(logo);

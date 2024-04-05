@@ -1,30 +1,34 @@
 import { PlaywrightTestConfig, devices } from "@playwright/test";
+import path from "path";
 
-interface EnvironmentConfig {
+interface EnvironmentConfigInterface {
   baseURL: string;
+  storageState: string; // this is only needed for the global login...
 }
 
-interface DeviceConfig {
+interface DeviceConfigInterface {
   [key: string]: any;
 }
 
-const getConfig = (): EnvironmentConfig => {
+export const getEnvironmentConfig = (): EnvironmentConfigInterface => {
   const env = process.env.NODE_ENV || "dev";
   switch (env) {
     case "dev":
       return {
         baseURL: "https://dev.natter.network/",
+        storageState: `state.json`, // this is only needed for the global login...
       };
     case "local":
       return {
         baseURL: "http://localhost:8080/",
+        storageState: `state.json`, // this is only needed for the global login...
       };
     default:
       throw new Error(`Unsupported environment: ${env}`);
   }
 };
 
-const getDeviceConfig = (device: string): DeviceConfig => {
+const getDeviceConfig = (device: string): DeviceConfigInterface => {
   switch (device) {
     case "mobile-chrome":
       return {
@@ -50,13 +54,17 @@ const getDeviceConfig = (device: string): DeviceConfig => {
 
 const config: PlaywrightTestConfig = {
   testDir: "./e2e",
-  workers: 5,
+  workers: 10,
   retries: 0,
   timeout: 60000,
   reporter: "list",
+  globalSetup: path.resolve(
+    __dirname,
+    `e2e/utils/globalSetup.ts` // this is only needed when im using the global login...
+  ),
 
   use: {
-    ...getConfig(),
+    ...getEnvironmentConfig(),
     ...(process.env.DEVICE ? getDeviceConfig(process.env.DEVICE) : {}),
   },
 };

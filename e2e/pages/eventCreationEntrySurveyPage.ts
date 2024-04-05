@@ -14,6 +14,7 @@ import {
   clickNextButtons,
   endCreateEventButton,
 } from "./eventCreationDetailsPage";
+import { Page } from "@playwright/test";
 
 export const buttonAddQuestion: PageLocator = getByRole({
   role: "button",
@@ -79,41 +80,38 @@ export const clearQuestionTypeField: PageLocator = getByLabel("Clear");
 export const questionTypeFieldValidationMessage: PageLocator = getByText(
   "In order to proceed, you must"
 );
-export const labelField0: PageLocator = getById("mui-37");
-export const labelField100: PageLocator = getById("mui-36");
-export const labelField0ForNatterPage: PageLocator = getById("mui-39");
-export const labelField100ForNatterPage: PageLocator = getById("mui-40");
-export const labelField0ForExitSurveyPage: PageLocator = getById("mui-43");
-export const labelField100ForExitSurveyPage: PageLocator = getById("mui-44");
+
+export const labelField0: PageLocator = getByLabel("Minimum Value Label");
+export const labelField100: PageLocator = getByLabel("Maximum Value Label");
 export const addTopicButton: PageLocator = getByRole({
   role: "button",
   name: "Add Topic",
 });
-export const topicInputField: PageLocator = (page) =>
+export const topicInputField: PageLocator = (page: Page) =>
   getByTestId("SortableItem-0")(page).getByLabel("Topic");
 
 export const clickAddQuestionButtonAndOpenSelector: PageAction = async (
-  page
+  page: Page
 ) => {
   await addQuestionButton(page).click();
   await openQuestionTypeSelector(page).click();
 };
 
 export const chooseQuestionType: PageAction = async (
-  page,
+  page: Page,
   questionType: PageLocator
 ) => {
   const questionTypeElement = questionType(page);
   await questionTypeElement.click();
 };
 
-export const chooseFreeTextQuestion: PageAction = async (page) => {
+export const chooseFreeTextQuestion: PageAction = async (page: Page) => {
   await clickAddQuestionButtonAndOpenSelector(page);
   await chooseQuestionType(page, chooseFreeTextQuestionType);
   await questionInputField(page).fill("My Free Text Question...!");
 };
 
-export const chooseSingleChoiceQuestion: PageAction = async (page) => {
+export const chooseSingleChoiceQuestion: PageAction = async (page: Page) => {
   await clickAddQuestionButtonAndOpenSelector(page);
   await chooseQuestionType(page, chooseSingleChoice);
   await questionInputField(page).fill("Single Choice Question");
@@ -121,7 +119,7 @@ export const chooseSingleChoiceQuestion: PageAction = async (page) => {
   await answerField2(page).fill("Answer2");
 };
 
-export const chooseMultipleChoiceQuestion: PageAction = async (page) => {
+export const chooseMultipleChoiceQuestion: PageAction = async (page: Page) => {
   await clickAddQuestionButtonAndOpenSelector(page);
   await chooseQuestionType(page, chooseMultipleChoice);
   await questionInputField(page).fill("Multiple Choice Question");
@@ -129,7 +127,7 @@ export const chooseMultipleChoiceQuestion: PageAction = async (page) => {
   await answerField2(page).fill("Answer2");
 };
 
-export const chooseRankingQuestion: PageAction = async (page) => {
+export const chooseRankingQuestion: PageAction = async (page: Page) => {
   await clickAddQuestionButtonAndOpenSelector(page);
   await chooseQuestionType(page, chooseRanking);
   await questionInputField(page).fill("Ranking Question");
@@ -137,7 +135,7 @@ export const chooseRankingQuestion: PageAction = async (page) => {
   await answerField2(page).fill("Answer2");
 };
 
-export const chooseSliderQuestion: PageAction = async (page) => {
+export const chooseSliderQuestion: PageAction = async (page: Page) => {
   await clickAddQuestionButtonAndOpenSelector(page);
   await chooseQuestionType(page, chooseSlider);
   await questionInputField(page).fill("Slider Question");
@@ -145,32 +143,34 @@ export const chooseSliderQuestion: PageAction = async (page) => {
   await labelField100(page).fill("Yes");
 };
 
-export const chooseNPSQuestion: PageAction = async (page) => {
+export const chooseNPSQuestion: PageAction = async (page: Page) => {
   await clickAddQuestionButtonAndOpenSelector(page);
   await chooseQuestionType(page, chooseNPS);
   await questionInputField(page).fill("NPS Question");
 };
 
-export const chooseSliderQuestionForNatterPage: PageAction = async (page) => {
-  await clickAddQuestionButtonAndOpenSelector(page);
-  await chooseQuestionType(page, chooseSlider);
-  await questionInputField(page).fill("Slider Question");
-  await labelField0ForNatterPage(page).fill("no");
-  await labelField100ForNatterPage(page).fill("yes");
-};
-
-export const chooseSliderQuestionForExitSurveyPage: PageAction = async (
-  page
+export const chooseSliderQuestionForNatterPage: PageAction = async (
+  page: Page
 ) => {
   await clickAddQuestionButtonAndOpenSelector(page);
   await chooseQuestionType(page, chooseSlider);
   await questionInputField(page).fill("Slider Question");
-  await labelField0ForExitSurveyPage(page).fill("no");
-  await labelField100ForExitSurveyPage(page).fill("yes");
+  await labelField0(page).fill("no");
+  await labelField100(page).fill("yes");
+};
+
+export const chooseSliderQuestionForExitSurveyPage: PageAction = async (
+  page: Page
+) => {
+  await clickAddQuestionButtonAndOpenSelector(page);
+  await chooseQuestionType(page, chooseSlider);
+  await questionInputField(page).fill("Slider Question");
+  await labelField0(page).fill("no");
+  await labelField100(page).fill("yes");
 };
 
 export const createEventWithQuestionType: PageAction = async (
-  page,
+  page: Page,
   questionType: PageAction,
   mandatory: boolean
 ) => {
@@ -186,7 +186,7 @@ export const createEventWithQuestionType: PageAction = async (
 };
 
 export const verifyQuestionValidation: PageAction = async (
-  page,
+  page: Page,
   questionType: PageAction,
   typeFieldValidation: boolean
 ) => {
@@ -220,7 +220,7 @@ const questionTypeSelectorsMapping = {
 };
 
 export const verifyQuestionFieldForQuestionType: PageAction = async (
-  page,
+  page: Page,
   questionType: QuestionTypeEnum
 ) => {
   const selectQuestionType = questionTypeSelectorsMapping[questionType];

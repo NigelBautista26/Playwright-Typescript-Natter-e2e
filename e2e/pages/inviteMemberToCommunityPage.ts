@@ -49,47 +49,59 @@ export const invalidEmailMessage: PageLocator = getByText(
   "email must be a valid email"
 );
 
-type RoleOptions =
-  | "Community Owner"
-  | "Community Manager"
-  | "Community Member"
-  | "Community Custom Access"
-  | "CSV file";
+export const enum RoleOptionsEnum {
+  CommunityOwner,
+  CommunityManager,
+  CommunityMember,
+  CommunityCustomAccess,
+  CSVFile,
+}
 
-const roleClickActions: Record<RoleOptions, PageAction> = {
-  "Community Owner": async (page) => communityOwnerOption(page).click(),
-  "Community Manager": async (page) => communityManagerOption(page).click(),
-  "Community Member": async (page) => communityMemberOption(page).click(),
-  "Community Custom Access": async (page) =>
-    communityCustomAccessOption(page).click(),
-  "CSV file": async (page) => uploadFileButton(page).setInputFiles(csvFile),
-};
+const roleOptionLocatorsMapping: Partial<Record<RoleOptionsEnum, PageLocator>> =
+  {
+    [RoleOptionsEnum.CommunityOwner]: communityOwnerOption,
+    [RoleOptionsEnum.CommunityManager]: communityManagerOption,
+    [RoleOptionsEnum.CommunityMember]: communityMemberOption,
+    [RoleOptionsEnum.CommunityCustomAccess]: communityCustomAccessOption,
+  };
 
-export const inviteMembers: PageAction = async (page, role: RoleOptions) => {
+export const inviteMembers: PageAction = async (
+  page: Page,
+  role: RoleOptionsEnum
+) => {
   await inviteMemberButton(page).click();
-  await memberEmailField(page).fill(`${faker.internet.email()}`);
+  await memberEmailField(page).fill(faker.internet.email());
   await rolesTab(page).click();
 
-  const clickAction = roleClickActions[role];
-  if (clickAction) {
-    await clickAction(page); // Pass the page parameter to the action function
+  // Handle CSVFile case directly
+  if (role === RoleOptionsEnum.CSVFile) {
+    await uploadFileButton(page).setInputFiles(csvFile);
   } else {
-    throw new Error(`Invalid role: ${role}`);
+    const selectRoleLocator = roleOptionLocatorsMapping[role];
+    if (selectRoleLocator) {
+      await selectRoleLocator(page).click();
+    } else {
+      throw new Error(`Invalid role: ${role}`);
+    }
   }
-
   await inviteButton(page).click();
 };
 
-const removeOptions: Record<string, PageLocator> = {
-  "Remove All": removeAllButton,
-  "Remove One Member": removeMemberButton,
+export const enum RemoveOptionEnum {
+  RemoveAll,
+  RemoveOneMember,
+}
+
+const removeOptionsMapping: Record<RemoveOptionEnum, PageLocator> = {
+  [RemoveOptionEnum.RemoveAll]: removeAllButton,
+  [RemoveOptionEnum.RemoveOneMember]: removeMemberButton,
 };
 
 export const uploadMembersThroughCSVfile: PageAction = async (
-  page,
-  removeOption: string
+  page: Page,
+  removeOption: RemoveOptionEnum
 ) => {
-  const actionButtonLocator = removeOptions[removeOption];
+  const actionButtonLocator = removeOptionsMapping[removeOption];
   if (!actionButtonLocator) {
     throw new Error(`Invalid remove option: ${removeOption}`);
   }
@@ -98,7 +110,7 @@ export const uploadMembersThroughCSVfile: PageAction = async (
 };
 
 const uploadAndRemoveMembers: PageAction = async (
-  page,
+  page: Page,
   actionButtonLocator: PageLocator
 ) => {
   await inviteMemberButton(page).click();
@@ -107,7 +119,7 @@ const uploadAndRemoveMembers: PageAction = async (
   await actionButton.click();
 };
 
-export const inviteUserWithInvalidEmail: PageAction = async (page) => {
+export const inviteUserWithInvalidEmail: PageAction = async (page: Page) => {
   await inviteMemberButton(page).click();
   await memberEmailField(page).fill(`NBT ${faker.internet.email()}`);
 };

@@ -1,4 +1,5 @@
 import { PageAction } from "@utils/pageUtils";
+import { Page } from "@playwright/test";
 
 import {
   addTopicButton,
@@ -14,7 +15,7 @@ import {
   endCreateEventButton,
 } from "./eventCreationDetailsPage";
 
-export const createEventWithTopic: PageAction = async (page) => {
+export const createEventWithTopic: PageAction = async (page: Page) => {
   await createEventPageSetup(page);
   await fillMandatoryFields(page);
   await clickNextButtons(page, 2);
@@ -25,7 +26,7 @@ export const createEventWithTopic: PageAction = async (page) => {
 };
 
 export const createEventWithQuestionTypeForNatterPage: PageAction = async (
-  page,
+  page: Page,
   questionType: PageAction,
   mandatory: boolean
 ) => {
@@ -41,7 +42,7 @@ export const createEventWithQuestionTypeForNatterPage: PageAction = async (
 };
 
 export const verifyQuestionValidationForNatterPage: PageAction = async (
-  page,
+  page: Page,
   questionType: PageAction,
   typeFieldValidation: boolean
 ) => {
