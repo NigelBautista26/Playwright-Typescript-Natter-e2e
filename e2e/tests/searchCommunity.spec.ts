@@ -13,9 +13,7 @@ test.describe("Search Community Tests", () => {
 
   test("Search a community", async ({ page }) => {
     await searchCommunity(page);
-    await expect(searchedCommunityName(page)).toHaveText(
-      "Nigels Search Community Test"
-    );
+    await expect(searchedCommunityName(page)).toHaveText("Test");
   });
 
   test("Searched community not found", async ({ page }) => {

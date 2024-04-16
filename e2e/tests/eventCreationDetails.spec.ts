@@ -19,7 +19,7 @@ import { expect, test } from "@playwright/test";
 
 test.describe("Event creation for details page test scenarios ", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/my-events/upcoming");
+    await page.goto("/event-wizard");
   });
 
   test("Create an event with only the required fields filled out", async ({

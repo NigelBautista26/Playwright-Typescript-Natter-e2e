@@ -21,7 +21,7 @@ import { expect, test } from "@playwright/test";
 
 test.describe("Event creation for exit survey page test scenarios ", async () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/my-events/upcoming");
+    await page.goto("/event-wizard");
   });
 
   test("Create a new event with an exit survey question type - Free Text Question - Mandatory", async ({

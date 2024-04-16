@@ -135,33 +135,24 @@ export const clickNextButtons: PageAction = async (
   }
 };
 
-export const createEventPageSetup: PageAction = async (page: Page) => {
-  await page.waitForTimeout(5000);
-  await startCreateEventButton(page).click();
-};
-
 export const createEventWithRequiredFields: PageAction = async (page: Page) => {
-  await createEventPageSetup(page);
   await fillMandatoryFields(page);
   await clickNextButtons(page, 4);
   await endCreateEventButton(page).click();
 };
 
 export const createEventAndCopyEventLink: PageAction = async (page: Page) => {
-  await createEventPageSetup(page);
   await createEventWithRequiredFields(page);
   await copyLinkButton(page).click();
 };
 
 export const createEventWithoutEventName: PageAction = async (page: Page) => {
-  await createEventPageSetup(page);
   await fillMandatoryFields(page);
   await eventNameInput(page).fill("");
   await clickNextButtons(page, 1);
 };
 
 export const createEventWithoutEventDate: PageAction = async (page: Page) => {
-  await createEventPageSetup(page);
   await eventNameInput(page).fill(`${faker.lorem.sentence()}`);
   await fillEventStartTime(page);
   await fillEventEndTime(page);
@@ -171,7 +162,6 @@ export const createEventWithoutEventDate: PageAction = async (page: Page) => {
 export const createEventWithoutEventStartTime: PageAction = async (
   page: Page
 ) => {
-  await createEventPageSetup(page);
   await eventNameInput(page).fill(`${faker.lorem.sentence()}`);
   await fillEventDate(page);
   await fillEventEndTime(page);
@@ -181,7 +171,6 @@ export const createEventWithoutEventStartTime: PageAction = async (
 export const createEventWithoutEventEndTime: PageAction = async (
   page: Page
 ) => {
-  await createEventPageSetup(page);
   await eventNameInput(page).fill(`${faker.lorem.sentence()}`);
   await fillEventDate(page);
   await fillEventStartTime(page);
@@ -191,7 +180,6 @@ export const createEventWithoutEventEndTime: PageAction = async (
 export const createEventWithOptionalEventLogoFieldOnly: PageAction = async (
   page: Page
 ) => {
-  await createEventPageSetup(page);
   await uploadEventFileButton(page).setInputFiles(logo);
   await clickNextButtons(page, 1);
 };
@@ -199,7 +187,6 @@ export const createEventWithOptionalEventLogoFieldOnly: PageAction = async (
 export const createEventWithOptionalSponsorLogoFieldOnly: PageAction = async (
   page: Page
 ) => {
-  await createEventPageSetup(page);
   await uploadSponsorFileButton(page).setInputFiles(logo);
   await clickNextButtons(page, 1);
 };

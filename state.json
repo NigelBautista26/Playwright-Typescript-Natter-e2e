@@ -1,18 +1,8 @@
 {
   "cookies": [
     {
-      "name": "AUTH_SESSION_ID_LEGACY",
-      "value": "d2a525c9-9175-4e94-bf39-65ea17ebcd16.keycloak-1-4681",
-      "domain": "dev-auth.natter.network",
-      "path": "/realms/Natter/",
-      "expires": -1,
-      "httpOnly": true,
-      "secure": true,
-      "sameSite": "Lax"
-    },
-    {
       "name": "AUTH_SESSION_ID",
-      "value": "d2a525c9-9175-4e94-bf39-65ea17ebcd16.keycloak-1-4681",
+      "value": "4ec5fa56-8cae-43ed-be7c-7056f277211a.keycloak-1-4681",
       "domain": "dev-auth.natter.network",
       "path": "/realms/Natter/",
       "expires": -1,
@@ -21,28 +11,8 @@
       "sameSite": "None"
     },
     {
-      "name": "KEYCLOAK_IDENTITY",
-      "value": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIyYzg4NmI4OS05MmNlLTQ4NTYtODIzMy1lMmI1ZTdjMDgyMTYifQ.eyJleHAiOjE3MTM4MzI1MjMsImlhdCI6MTcxMzIyNzcyMywianRpIjoiMGRhZDJlMjItNTZlYy00N2I1LWE2M2MtOTIxNjhjMmFkZjFjIiwiaXNzIjoiaHR0cHM6Ly9kZXYtYXV0aC5uYXR0ZXIubmV0d29yay9yZWFsbXMvTmF0dGVyIiwic3ViIjoiMDZhZjcxOGEtN2RjZi00N2YyLWFiNmMtZWE5Y2ZiMmVjYjIxIiwidHlwIjoiU2VyaWFsaXplZC1JRCIsInNlc3Npb25fc3RhdGUiOiJkMmE1MjVjOS05MTc1LTRlOTQtYmYzOS02NWVhMTdlYmNkMTYiLCJzaWQiOiJkMmE1MjVjOS05MTc1LTRlOTQtYmYzOS02NWVhMTdlYmNkMTYiLCJzdGF0ZV9jaGVja2VyIjoieWhMR3g3N2N0Z1ZPcVVNOU9yU1NSTXNCc1NzYVRnOXJZajh5UmlsWnFONCJ9.0033oA-yDxHR7kUWm_-o5LrDkuf8FbMRrZRcaKFKLwY",
-      "domain": "dev-auth.natter.network",
-      "path": "/realms/Natter/",
-      "expires": -1,
-      "httpOnly": true,
-      "secure": true,
-      "sameSite": "None"
-    },
-    {
-      "name": "KEYCLOAK_SESSION",
-      "value": "Natter/06af718a-7dcf-47f2-ab6c-ea9cfb2ecb21/d2a525c9-9175-4e94-bf39-65ea17ebcd16",
-      "domain": "dev-auth.natter.network",
-      "path": "/realms/Natter/",
-      "expires": 1713832523.211693,
-      "httpOnly": false,
-      "secure": true,
-      "sameSite": "None"
-    },
-    {
-      "name": "KEYCLOAK_IDENTITY_LEGACY",
-      "value": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIyYzg4NmI4OS05MmNlLTQ4NTYtODIzMy1lMmI1ZTdjMDgyMTYifQ.eyJleHAiOjE3MTM4MzI1MjMsImlhdCI6MTcxMzIyNzcyMywianRpIjoiMGRhZDJlMjItNTZlYy00N2I1LWE2M2MtOTIxNjhjMmFkZjFjIiwiaXNzIjoiaHR0cHM6Ly9kZXYtYXV0aC5uYXR0ZXIubmV0d29yay9yZWFsbXMvTmF0dGVyIiwic3ViIjoiMDZhZjcxOGEtN2RjZi00N2YyLWFiNmMtZWE5Y2ZiMmVjYjIxIiwidHlwIjoiU2VyaWFsaXplZC1JRCIsInNlc3Npb25fc3RhdGUiOiJkMmE1MjVjOS05MTc1LTRlOTQtYmYzOS02NWVhMTdlYmNkMTYiLCJzaWQiOiJkMmE1MjVjOS05MTc1LTRlOTQtYmYzOS02NWVhMTdlYmNkMTYiLCJzdGF0ZV9jaGVja2VyIjoieWhMR3g3N2N0Z1ZPcVVNOU9yU1NSTXNCc1NzYVRnOXJZajh5UmlsWnFONCJ9.0033oA-yDxHR7kUWm_-o5LrDkuf8FbMRrZRcaKFKLwY",
+      "name": "AUTH_SESSION_ID_LEGACY",
+      "value": "4ec5fa56-8cae-43ed-be7c-7056f277211a.keycloak-1-4681",
       "domain": "dev-auth.natter.network",
       "path": "/realms/Natter/",
       "expires": -1,
@@ -52,20 +22,50 @@
     },
     {
       "name": "KEYCLOAK_SESSION_LEGACY",
-      "value": "Natter/06af718a-7dcf-47f2-ab6c-ea9cfb2ecb21/d2a525c9-9175-4e94-bf39-65ea17ebcd16",
+      "value": "Natter/991fa9c0-dc54-41b3-b092-fb304f6410f4/4ec5fa56-8cae-43ed-be7c-7056f277211a",
       "domain": "dev-auth.natter.network",
       "path": "/realms/Natter/",
-      "expires": 1713832523.211731,
+      "expires": 1713911356.025914,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Lax"
     },
     {
+      "name": "KEYCLOAK_IDENTITY_LEGACY",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIyYzg4NmI4OS05MmNlLTQ4NTYtODIzMy1lMmI1ZTdjMDgyMTYifQ.eyJleHAiOjE3MTM5MTEzNTYsImlhdCI6MTcxMzMwNjU1NiwianRpIjoiOGZmYzM2MmItYTNiZS00MDkyLTg1MjItZjgwMjdmM2IzNDNlIiwiaXNzIjoiaHR0cHM6Ly9kZXYtYXV0aC5uYXR0ZXIubmV0d29yay9yZWFsbXMvTmF0dGVyIiwic3ViIjoiOTkxZmE5YzAtZGM1NC00MWIzLWIwOTItZmIzMDRmNjQxMGY0IiwidHlwIjoiU2VyaWFsaXplZC1JRCIsInNlc3Npb25fc3RhdGUiOiI0ZWM1ZmE1Ni04Y2FlLTQzZWQtYmU3Yy03MDU2ZjI3NzIxMWEiLCJzaWQiOiI0ZWM1ZmE1Ni04Y2FlLTQzZWQtYmU3Yy03MDU2ZjI3NzIxMWEiLCJzdGF0ZV9jaGVja2VyIjoidVktQk5NcThXSWZqWDU2WXIyN2NFN0t2ZndzVlRBYWNHdHV3NFM5aDVrbyJ9.h4fgErFbIJb5Z1pVgmhxXOncXNLOGOu2DVI7noGBxAU",
+      "domain": "dev-auth.natter.network",
+      "path": "/realms/Natter/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "KEYCLOAK_SESSION",
+      "value": "Natter/991fa9c0-dc54-41b3-b092-fb304f6410f4/4ec5fa56-8cae-43ed-be7c-7056f277211a",
+      "domain": "dev-auth.natter.network",
+      "path": "/realms/Natter/",
+      "expires": 1713911356.025987,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "KEYCLOAK_IDENTITY",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIyYzg4NmI4OS05MmNlLTQ4NTYtODIzMy1lMmI1ZTdjMDgyMTYifQ.eyJleHAiOjE3MTM5MTEzNTYsImlhdCI6MTcxMzMwNjU1NiwianRpIjoiOGZmYzM2MmItYTNiZS00MDkyLTg1MjItZjgwMjdmM2IzNDNlIiwiaXNzIjoiaHR0cHM6Ly9kZXYtYXV0aC5uYXR0ZXIubmV0d29yay9yZWFsbXMvTmF0dGVyIiwic3ViIjoiOTkxZmE5YzAtZGM1NC00MWIzLWIwOTItZmIzMDRmNjQxMGY0IiwidHlwIjoiU2VyaWFsaXplZC1JRCIsInNlc3Npb25fc3RhdGUiOiI0ZWM1ZmE1Ni04Y2FlLTQzZWQtYmU3Yy03MDU2ZjI3NzIxMWEiLCJzaWQiOiI0ZWM1ZmE1Ni04Y2FlLTQzZWQtYmU3Yy03MDU2ZjI3NzIxMWEiLCJzdGF0ZV9jaGVja2VyIjoidVktQk5NcThXSWZqWDU2WXIyN2NFN0t2ZndzVlRBYWNHdHV3NFM5aDVrbyJ9.h4fgErFbIJb5Z1pVgmhxXOncXNLOGOu2DVI7noGBxAU",
+      "domain": "dev-auth.natter.network",
+      "path": "/realms/Natter/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
       "name": "intercom-id-gtxki9gc",
-      "value": "239b1cf4-2001-4002-afe0-39eb491cf634",
+      "value": "3d65e939-3796-4d7b-b6e8-56682d5641bf",
       "domain": ".natter.network",
       "path": "/",
-      "expires": 1736557724,
+      "expires": 1736636556,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -75,17 +75,17 @@
       "value": "",
       "domain": ".natter.network",
       "path": "/",
-      "expires": 1713832524,
+      "expires": 1713911356,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "intercom-device-id-gtxki9gc",
-      "value": "6b0f1629-c247-44b5-ae98-18eb61f842d6",
+      "value": "16690e5c-6e1f-4844-9382-e0adf511b8f6",
       "domain": ".natter.network",
       "path": "/",
-      "expires": 1736557725,
+      "expires": 1736636559,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -96,8 +96,8 @@
       "origin": "https://dev.natter.network",
       "localStorage": [
         {
-          "name": "preferredCommunityId-user4040245",
-          "value": "4012755"
+          "name": "preferredCommunityId-user627495",
+          "value": "4012979"
         },
         {
           "name": "intercom.intercom-state-gtxki9gc",

@@ -9,7 +9,6 @@ import {
   getByText,
 } from "@utils/pageUtils";
 import {
-  createEventPageSetup,
   fillMandatoryFields,
   clickNextButtons,
   endCreateEventButton,
@@ -174,7 +173,6 @@ export const createEventWithQuestionType: PageAction = async (
   questionType: PageAction,
   mandatory: boolean
 ) => {
-  await createEventPageSetup(page);
   await fillMandatoryFields(page);
   await clickNextButtons(page, 1);
   await questionType(page);
@@ -190,7 +188,6 @@ export const verifyQuestionValidation: PageAction = async (
   questionType: PageAction,
   typeFieldValidation: boolean
 ) => {
-  await createEventPageSetup(page);
   await fillMandatoryFields(page);
   await clickNextButtons(page, 1);
   await questionType(page);

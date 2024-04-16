@@ -6,7 +6,6 @@ import {
   uncheckMandatoryBox,
 } from "./eventCreationEntrySurveyPage";
 import {
-  createEventPageSetup,
   fillMandatoryFields,
   clickNextButtons,
   endCreateEventButton,
@@ -18,7 +17,6 @@ export const createEventWithQuestionTypeForExitSurveyPage: PageAction = async (
   questionType: PageAction,
   mandatory: boolean
 ) => {
-  await createEventPageSetup(page);
   await fillMandatoryFields(page);
   await clickNextButtons(page, 3);
   await questionType(page);
@@ -34,7 +32,6 @@ export const verifyQuestionValidationForExitSurveyPage: PageAction = async (
   questionType: PageAction,
   typeFieldValidation: boolean
 ) => {
-  await createEventPageSetup(page);
   await fillMandatoryFields(page);
   await clickNextButtons(page, 3);
   await questionType(page);

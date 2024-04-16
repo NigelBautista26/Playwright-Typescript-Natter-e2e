@@ -23,7 +23,7 @@ import { expect, test } from "@playwright/test";
 
 test.describe("Event creation for natter page test scenarios ", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/my-events/upcoming");
+    await page.goto("/event-wizard");
   });
 
   test("Create a new event with a natter survey question type - Free Text Question - Mandatory", async ({
